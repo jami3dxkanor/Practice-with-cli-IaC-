@@ -1,6 +1,6 @@
-## Creando Flujo vpc
+# AWS VPC Setup via CLI
 
-echo "Creando Vpc"
+Este repositorio contiene un script Bash que crea una infraestructura básica de red pública en AWS utilizando AWS CLI.
 
 VPC_ID=$(aws ec2 create-vpc \
 --cidr-block 10.0.0.0/16 \
@@ -20,7 +20,7 @@ SUBNET_ID=$(aws ec2 create-subnet \
     --output text
 )
 
-echo "Subnet pública creeada $SUBNET_ID"
+echo "Subnet pública creada $SUBNET_ID"
 
 SUBNET_ID2=$(aws ec2 create-subnet \
     --vpc-id $VPC_ID \
@@ -30,7 +30,7 @@ SUBNET_ID2=$(aws ec2 create-subnet \
     --output text
 )
 
-echo "Subnet pública creeada $SUBNET_ID2"
+echo "Subnet pública creada $SUBNET_ID2"
 
 
 IGW_ID=$(aws ec2 create-internet-gateway \
@@ -40,8 +40,6 @@ IGW_ID=$(aws ec2 create-internet-gateway \
 )
 
 echo "Obteniendo Id de IGW $IGW_ID"
-
-##AQUI NO SE COMO ES EL QUERY PARA OBTENER ESO EXACTAMENTE PERO L ODEMAS ESTOY SEGURO QUE ES ASI AHORA ESO NO REQUIERE JUNTARLO RECIEN SE USA ATTACH
 
 
 aws ec2 attach-internet-gateway \
@@ -70,7 +68,7 @@ aws ec2 associate-route-table \
     --subnet-id $SUBNET_ID \
     --route-table-id $MAIN_ROUTE_ID
 
-echo "Tabla de ruta asociada a la Subnet pública ✅"
+echo "Tabla de ruta asociada a la Subnet pública"
 
 aws ec2 modify-subnet-attribute \
   --subnet-id $SUBNET_ID \

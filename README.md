@@ -1,18 +1,24 @@
 # AWS VPC - CLI Setup (Red Pública)
 
-Este script crea una infraestructura básica de red pública en AWS utilizando la AWS CLI.
+Este repositorio contiene un script que automatiza la creación de una red pública en AWS usando la CLI. Es parte de mis prácticas de infraestructura cloud desde la terminal.
 
-## Flujo del script:
+## ¿Qué crea este script?
 
-1. Crear una VPC
-2. Crear subnets públicas
-3. Crear y asociar un Internet Gateway
-4. Crear una tabla de ruteo
-5. Crear una ruta hacia internet (0.0.0.0/0)
-6. Asociar la tabla a la subnet
-7. Activar asignación automática de IP pública
+- ✅ Una VPC con bloque CIDR `10.0.0.0/16`
+- ✅ Dos subnets públicas
+- ✅ Un Internet Gateway (IGW)
+- ✅ Una tabla de ruteo
+- ✅ Ruta hacia internet (`0.0.0.0/0`)
+- ✅ Asociación de la tabla con la subnet
+- ✅ Configuración para asignar IP pública automáticamente
 
 ## Requisitos
 
-- Tener configurada la AWS CLI (`aws configure`)
-- Permisos para crear recursos de red
+- Tener configurada la CLI de AWS (`aws configure`)
+- Permisos para crear recursos de red: VPC, Subnets, IGW, Tablas de ruteo
+
+## Ejecución
+
+```bash
+chmod +x vpc-public-setup.sh
+./vpc-public-setup.sh
